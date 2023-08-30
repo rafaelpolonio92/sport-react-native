@@ -4,7 +4,7 @@ import React from 'react';
 const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text> Rafael </Text>
+      <Text> Rafael Polonio</Text>
     </View>
   );
 };

@@ -8,9 +8,9 @@ import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type RootStackParamList = {
-  SignIn: undefined;  // No parameters expected for SignIn route
-  Home: undefined;    // No parameters expected for Home route
-  // ... add other routes here if any
+  SignIn: undefined;
+  Home: undefined;
+  MainApp: { initialRouteName?: string };  // Add this line
 };
 
 const fetchFonts = () => {
@@ -44,12 +44,12 @@ const SignIn: FC = () => {
       if (response?.type === "success") {
         setToken(response.authentication?.accessToken!);
         getUserInfo(response.authentication?.accessToken!);
-        navigation.navigate("Home")
+        navigation.navigate("MainApp", { initialRouteName: "Home" });
       }
     } else {
       setUserInfo(user);
       console.log(user)
-      navigation.navigate("Home")
+      navigation.navigate("MainApp", { initialRouteName: "Home" });
       console.log("loaded locally");
     }
   }
