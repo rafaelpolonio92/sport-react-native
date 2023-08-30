@@ -6,9 +6,6 @@ import AppLoading from 'expo-app-loading';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as WebBrowser from "expo-web-browser";
-
-WebBrowser.maybeCompleteAuthSession();
 
 type RootStackParamList = {
   SignIn: undefined;  // No parameters expected for SignIn route
@@ -40,7 +37,6 @@ const SignIn: FC = () => {
 
   async function handleSignInWithGoogle() {
     const user = await getLocalUser();
-    console.log("user", user);
     console.log({
       response
     })
@@ -52,6 +48,7 @@ const SignIn: FC = () => {
       }
     } else {
       setUserInfo(user);
+      console.log(user)
       navigation.navigate("Home")
       console.log("loaded locally");
     }
