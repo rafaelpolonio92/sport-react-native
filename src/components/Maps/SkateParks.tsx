@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import axios from 'axios';
+import Config from 'react-native-config';
 
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY; // Replace with your API Key
+const GOOGLE_API_KEY = Config.GOOGLE_MAPS_API_KEY;
 
 const center = {
   latitude: 40.730610,
