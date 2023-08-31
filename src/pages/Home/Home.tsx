@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { styles } from "./styles";
 import TrickCards from "../../components/Cards/TrickCards";
+import SkateparksMap from "../../components/Maps/SkateParks";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -19,7 +20,7 @@ const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
       <AppLoading
         startAsync={fetchFonts}
         onFinish={() => setFontLoaded(true)}
-        onError={console.warn}
+        onError={console.log}
       />
     );
   }
@@ -32,6 +33,7 @@ const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
             IMPROVE YOUR SKATEBOARDING
           </Text>
       </View>
+      <SkateparksMap />
       <TrickCards />
     </ScrollView>
     </>

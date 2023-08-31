@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from '../pages/Home/Home';
+import HomeScreen from '../../pages/Home/Home';
 const Drawer = createDrawerNavigator();
 
 function DrawerNavigator({ route }: any) {
