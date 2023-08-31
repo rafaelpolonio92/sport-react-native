@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import axios from 'axios';
 
-const GOOGLE_API_KEY = 'AIzaSyC9Hp_NMId2W3a7Q03VyTfMqy5406E8YZc'; // Replace with your API Key
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY; // Replace with your API Key
 
 const center = {
   latitude: 40.730610,
