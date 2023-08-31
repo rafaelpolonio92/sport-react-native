@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import axios from 'axios';
+import Geolocation from '@react-native-community/geolocation';
 import Config from 'react-native-config';
 
-const GOOGLE_API_KEY = Config.GOOGLE_MAPS_API_KEY;
-
-const center = {
-  latitude: 40.730610,
-  longitude: -73.935242,
-};
+const GOOGLE_API_KEY = 'AIzaSyC9Hp_NMId2W3a7Q03VyTfMqy5406E8YZc';
 
 type Skatepark = {
   place_id: string;
@@ -24,8 +20,30 @@ type Skatepark = {
 
 const SkateparksMap: React.FC = () => {
   const [skateparks, setSkateparks] = useState<Skatepark[]>([]);
+  const [center, setCenter] = useState({
+    latitude: 40.730610, // default values, will be overwritten by current location
+    longitude: -73.935242,
+  });
   const [isMapReady, setIsMapReady] = useState(false);
 
+  useEffect(() => {
+    Geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords;
+        setCenter({ latitude, longitude });
+      },
+      error => {
+        Alert.alert('Location Error', 'Failed to get current location');
+        console.error(error);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 10000,
+      }
+    );
+  }, []);
+  console.log(center)
   useEffect(() => {
     const fetchSkateparks = async () => {
       try {
@@ -37,13 +55,13 @@ const SkateparksMap: React.FC = () => {
     };
 
     fetchSkateparks();
-  }, []);
+  }, [center]);
 
   return (
     <View style={styles.container}>
       <MapView 
         style={styles.map}
-        initialRegion={{
+        region={{
           ...center,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
@@ -72,7 +90,7 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
     minHeight: "100%",
-    minWidth: "100%", // OPTIONAL
+    minWidth: "100%",
   },
 });
 

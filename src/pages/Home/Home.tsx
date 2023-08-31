@@ -28,13 +28,13 @@ const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <>
     <ScrollView>
+      <SkateparksMap />
       <View style={styles.mainContainer}>
           <Text style={styles.text}>
             IMPROVE YOUR SKATEBOARDING
           </Text>
       </View>
-      <SkateparksMap />
-      <TrickCards />
+      {/* <TrickCards /> */}
     </ScrollView>
     </>
   );
