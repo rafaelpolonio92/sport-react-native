@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
@@ -26,12 +26,14 @@ const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
     <>
-     <View style={styles.mainContainer}>
-        <Text style={styles.text}>
-          IMPROVE YOUR SKATEBOARDING
-        </Text>
-    </View>
-    <TrickCards />
+    <ScrollView>
+      <View style={styles.mainContainer}>
+          <Text style={styles.text}>
+            IMPROVE YOUR SKATEBOARDING
+          </Text>
+      </View>
+      <TrickCards />
+    </ScrollView>
     </>
   );
 };

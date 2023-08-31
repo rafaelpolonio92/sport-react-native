@@ -4,28 +4,37 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../pages/Home/Home';
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator: FC = () => {
+function DrawerNavigator({ route }: any) {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        // For the drawer item styles
-        screenOptions={{
-          drawerActiveBackgroundColor: '#FFFFFF',
-          drawerInactiveBackgroundColor: '#000',
-          drawerActiveTintColor: "#000",
-          drawerInactiveTintColor: '#FFFFFF',
-          drawerStyle: {
-            backgroundColor: "#000",
-            width: 250
-          }
-        }}
-      >
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Test" component={HomeScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  )
+    <Drawer.Navigator 
+      initialRouteName="Home"
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#28282B',  // setting background color to black
+          paddingTop: 20,
+        },
+        drawerItemStyle: {
+          marginVertical: 5,
+          borderRadius: 10
+        },
+        drawerActiveBackgroundColor: 'rgba(255, 255, 255, 0.1)',
+        drawerInactiveBackgroundColor: 'transparent',
+        drawerActiveTintColor: 'white',
+        drawerInactiveTintColor: 'white',
+      }}
+    >
+      <Drawer.Screen 
+        name="Home" 
+        component={HomeScreen} 
+        options={{
+          headerStyle: {
+            backgroundColor: 'rgba(10, 10, 10, 1)', // matte black
+          },
+          headerTintColor: 'white',
+        }} 
+      />
+    </Drawer.Navigator>
+  );
 }
 
 export default DrawerNavigator
