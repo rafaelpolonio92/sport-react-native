@@ -1,15 +1,14 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from './src/pages/SignIn';
 import DrawerComponent from './src/components/Drawer';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import Config from 'react-native-config';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql', // your GraphQL server's URL
+  uri: Config.REACT_APP_GRAPHQL_API_URL,
   cache: new InMemoryCache(),
 });
 
