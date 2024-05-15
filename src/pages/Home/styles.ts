@@ -12,5 +12,15 @@ export const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'Anton-Regular',
     textAlign: 'center',
-  }
+  },
+  scrollView: {
+    flex: 1,
+  },
+  mapContainer: {
+    height: 300, // specify height for map
+    marginBottom: 20,
+  },
+  trickCardsContainer: {
+    flex: 1,
+  },
 });

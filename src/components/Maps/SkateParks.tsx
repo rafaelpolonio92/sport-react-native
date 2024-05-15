@@ -5,7 +5,7 @@ import axios from 'axios';
 import Geolocation from '@react-native-community/geolocation';
 import Config from 'react-native-config';
 
-const GOOGLE_API_KEY = 'AIzaSyC9Hp_NMId2W3a7Q03VyTfMqy5406E8YZc';
+const GOOGLE_API_KEY = Config.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 type Skatepark = {
   place_id: string;
@@ -43,7 +43,7 @@ const SkateparksMap: React.FC = () => {
       }
     );
   }, []);
-  console.log(center)
+
   useEffect(() => {
     const fetchSkateparks = async () => {
       try {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { styles } from "./styles";
@@ -27,14 +26,23 @@ const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
     <>
-    <ScrollView>
-      <SkateparksMap />
+    <ScrollView style={styles.scrollView}>
       <View style={styles.mainContainer}>
           <Text style={styles.text}>
             IMPROVE YOUR SKATEBOARDING
           </Text>
       </View>
-      {/* <TrickCards /> */}
+      <View style={styles.trickCardsContainer}>
+        <TrickCards />
+      </View>
+      <View style={styles.mainContainer}>
+        <Text style={styles.text}>
+          FIND NEARBY SKATEPARKS
+        </Text>
+      </View>
+      <View style={styles.mapContainer}>
+        <SkateparksMap />
+      </View>
     </ScrollView>
     </>
   );
